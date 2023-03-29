@@ -2,14 +2,11 @@ package com.epam.mjc.io;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class FileReader {// Compliant
-    public static Profile getDataFromFile(File file) {
+    public Profile getDataFromFile(File file) {
 
         Map<String, Object> map = new HashMap<>();
 
@@ -24,10 +21,8 @@ public class FileReader {// Compliant
                     map.put(key, value.replace(" ", ""));
                 }
             }
-        } catch (FileNotFoundException ex) {
-            System.err.println("File Nod Found ex: " + ex);
-        } catch (IOException ex) {
-            System.err.println("Has Stream Error ex: " + ex);
+        } catch (Exception ex) {
+            System.err.println("File not found or another error: " + ex);
         }
 
         Profile profile = new Profile();
