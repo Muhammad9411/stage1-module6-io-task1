@@ -9,7 +9,6 @@ import java.util.Map;
 
 
 public class FileReader {// Compliant
-
     public static Profile getDataFromFile(File file) {
 
         Map<String, Object> map = new HashMap<>();
@@ -23,14 +22,12 @@ public class FileReader {// Compliant
                     String key = keyValuePair[0];
                     String value = keyValuePair[1];
                     map.put(key, value.replace(" ", ""));
-                } else {
-                    System.err.println("No Key:Value found in line, ignoring: " + line);
                 }
             }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException("File Nod Found "  + e);
-        } catch (IOException e) {
-            throw new RuntimeException("Has Stream Error " + e);
+        } catch (FileNotFoundException ex) {
+            System.err.println("File Nod Found ex: " + ex);
+        } catch (IOException ex) {
+            System.err.println("Has Stream Error ex: " + ex);
         }
 
         Profile profile = new Profile();
